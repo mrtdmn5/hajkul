@@ -1,0 +1,135 @@
+{
+  "hero": {
+    "title": "Your Partner in Innovative Solutions",
+    "subtitle": "Empowering Your Business with Technology",
+    "cta": "JOIN THE ADVENTURE"
+  },
+  "stats": [
+    {
+      "value": "10",
+      "suffix": "+",
+      "label": "Mobile Apps Delivered"
+    },
+    {
+      "value": "10",
+      "suffix": "+",
+      "label": "Web Projects"
+    },
+    {
+      "value": "5",
+      "suffix": "+",
+      "label": "Years of Expertise"
+    },
+    {
+      "value": "9",
+      "suffix": "/10",
+      "label": "5-Star Ratings from Our Partners"
+    }
+  ],
+  "about": "We specialize in delivering tailored software solutions to help your business thrive. From mobile apps to enterprise-level IT systems, we turn your vision into reality.",
+  "services": [
+    {
+      "id": "custom-software",
+      "title": "Custom Software & Web Apps",
+      "description": "Tailored software and end-to-end web applications built for high performance, scalability, and any business challenge.",
+      "icon": "Code2"
+    },
+    {
+      "id": "mobile-app",
+      "title": "Mobile App Expertise",
+      "description": "End-to-end mobile application development for Android and iOS platforms with cutting-edge technologies.",
+      "icon": "Smartphone"
+    },
+    {
+      "id": "cloud-integration",
+      "title": "Cloud Integration",
+      "description": "Seamless cloud-based solutions for storage, scalability, and collaboration.",
+      "icon": "Cloud"
+    },
+    {
+      "id": "ui-ux",
+      "title": "UI/UX Design",
+      "description": "User-centered design to create intuitive and engaging digital experiences.",
+      "icon": "Palette"
+    }
+  ],
+  "techStack": [
+    {
+      "name": "React Native",
+      "description": "Ensures efficient cross-platform development for Android and iOS.",
+      "icon": "Smartphone"
+    },
+    {
+      "name": "Firebase",
+      "description": "Provides real-time database management, authentication, and cloud functions.",
+      "icon": "Database"
+    },
+    {
+      "name": "Unity 3D",
+      "description": "Empowers us to create immersive virtual and augmented reality experiences.",
+      "icon": "Box"
+    },
+    {
+      "name": "React.js",
+      "description": "Helps us build dynamic and interactive web interfaces.",
+      "icon": "Globe"
+    },
+    {
+      "name": "AWS",
+      "description": "Offers reliable cloud solutions, ensuring scalability and secure infrastructure.",
+      "icon": "CloudLightning"
+    },
+    {
+      "name": "WordPress",
+      "description": "Is our go-to for flexible and customizable content management systems.",
+      "icon": "Layout"
+    }
+  ],
+  "faq": [
+    {
+      "category": "Platform",
+      "question": "Do you support multi-platform solutions?",
+      "answers": [
+        "Yes: We deliver solutions for Android, iOS, and web platforms seamlessly.",
+        "React Native: Enables efficient cross-platform development with a single codebase for mobile apps.",
+        "React.js: Ensures responsive and interactive web applications.",
+        "Unity 3D: Allows cross-platform game and AR/VR experiences.",
+        "Firebase & AWS: Provide backend support for multi-platform integrations."
+      ]
+    },
+    {
+      "category": "Updates",
+      "question": "How often do you release updates for projects?",
+      "answers": [
+        "Periodic Updates: We release updates based on client feedback and evolving needs.",
+        "Agile Process: Updates are delivered in sprints during the development phase.",
+        "Maintenance: Includes regular bug fixes, performance improvements, and security enhancements.",
+        "Review Sessions: Feedback sessions ensure updates align with client expectations."
+      ]
+    },
+    {
+      "category": "Safety",
+      "question": "How do you ensure data security?",
+      "answers": [
+        "Encryption: Data is encrypted during transit (SSL/TLS) and at rest (AES-256).",
+        "Secure Authentication: We implement multi-factor authentication and token-based access control.",
+        "Regular Audits: Security audits are conducted periodically to identify vulnerabilities.",
+        "Compliance: We adhere to GDPR, HIPAA, and CCPA regulations as required.",
+        "Firewall & Monitoring: Use firewalls, intrusion detection systems, and real-time monitoring for protection.",
+        "Secure Coding: Developers follow OWASP guidelines to prevent security flaws.",
+        "Backup & Recovery: Regular backups and disaster recovery plans minimize risks."
+      ]
+    }
+  ],
+  "contact": {
+    "title": "We're Here to Help!",
+    "subtitle": "Have questions? We're just a click away.",
+    "cta": "Contact us today to get started on your next big idea.",
+    "location": {
+      "country": "Sweden",
+      "address": "Nobelvägen 127, 212 15 Malmö"
+    },
+    "email": "info@hajkul.se",
+    "copyright": "Copyright © Hajkul All Rights Reserved. WordPress Foundation, React.js Innovation | Designed by Hajkul."
+  }
+}

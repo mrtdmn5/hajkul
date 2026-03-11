@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", "sans-serif";
+  --font-poppins: "Poppins", "sans-serif";
+  --color-slate-900: #0f172a;
+  --color-purple-500: #a855f7;
+  --color-indigo-500: #6366f1;
+  --color-blue-500: #3b82f6;
+  --color-cyan-400: #22d3ee;
+  
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #13131c;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-inter);
+    background-color: var(--color-bg-primary);
+  }
+  
+  body {
+    @apply antialiased overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  .glass-card {
+    @apply bg-slate-900/50 backdrop-blur-xl border border-white/5 hover:border-purple-500/30 transition-all duration-300;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400;
+  }
+}
