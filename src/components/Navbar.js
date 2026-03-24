@@ -49,8 +49,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-2xl font-bold font-poppins text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-500 flex items-center gap-3">
-          <span className="font-doto text-4xl text-blue-400 tracking-wide">TypeofX </span>
-          {/* <span className="text-xl text-slate-300">CONSULTING AB</span> */}
+          <span className="font-doto text-4xl text-blue-400 tracking-wide flex items-center">
+            Typeof
+            <span className="relative inline-block">
+              <span className="text-main-secondary">X</span>
+              <span className="absolute  right-[-3px] text-main-secondary">X</span>
+            </span>
+          </span>
         </a>
 
         {/* Desktop Nav */}

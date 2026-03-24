@@ -18,6 +18,7 @@
   --color-bg-gradient-top: var(--color-bg-gradient-top);
   --color-bg-gradient-mid: var(--color-bg-gradient-mid);
   --color-bg-gradient-bottom: var(--color-bg-gradient-bottom);
+  --color-main-secondary: var(--color-main-secondary);
 }
 
 @layer base {

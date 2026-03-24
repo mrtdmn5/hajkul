@@ -43,7 +43,6 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Parallax and Gradients */}
-      <div>{"burada cagir gorelim"}</div>
       <motion.div style={{ y: y1 }} className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-600/20 rounded-full blur-[100px]" />
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px]" />
