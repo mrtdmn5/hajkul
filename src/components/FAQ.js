@@ -6,7 +6,7 @@ import content from '../content.json';
 const getCategoryIcon = (category) => {
   switch(category) {
     case 'Platform': return <Globe className="w-5 h-5 text-blue-400" />;
-    case 'Updates': return <Zap className="w-5 h-5 text-purple-400" />;
+    case 'Updates': return <Zap className="w-5 h-5 text-emerald-400" />;
     case 'Safety': return <ShieldCheck className="w-5 h-5 text-cyan-400" />;
     default: return <ChevronDown className="w-5 h-5 text-slate-400" />;
   }
@@ -59,7 +59,7 @@ const FAQItem = ({ faq, isOpen, toggleOpen }) => {
                   const [boldPart, rest] = answer.split(': ');
                   return (
                     <li key={index} className="flex items-start gap-3 text-slate-300 font-light text-sm md:text-base">
-                      <div className="mt-1.5 w-1.5 h-1.5 aspect-square rounded-full bg-gradient-to-r from-purple-400 to-cyan-400"></div>
+                      <div className="mt-1.5 w-1.5 h-1.5 aspect-square rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400"></div>
                       <span>
                         {rest ? (
                           <>

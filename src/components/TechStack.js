@@ -12,7 +12,7 @@ const IconComponent = ({ name, className }) => {
 const TechStack = () => {
   return (
     <section id="tech" className="py-32 relative bg-slate-950/80 border-y border-white/5 backdrop-blur-3xl overflow-hidden">
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/2"></div>
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/2"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -38,11 +38,11 @@ const TechStack = () => {
               initial={{ opacity: 0, scale: 0.8, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "0px" }}
               whileHover={{ y: -10, scale: 1.05 }}
               className="group flex flex-col items-center justify-center p-6 glass-card rounded-2xl relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-colors duration-500 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-blue-500/0 group-hover:from-emerald-500/10 group-hover:to-blue-500/10 transition-colors duration-500 rounded-2xl"></div>
               
               <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30 transition-all duration-300 relative z-10">
                 <IconComponent name={tech.icon} className="w-8 h-8 text-slate-300 group-hover:text-cyan-400 transition-colors" />

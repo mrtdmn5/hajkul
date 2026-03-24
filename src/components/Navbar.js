@@ -22,17 +22,35 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setIsOpen(false);
+
+    // Add a slight delay to allow the menu to start closing before scrolling
+    setTimeout(() => {
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        // Offset for fixed navbar
+        const yOffset = -80;
+        const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: 'spring' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-slate-900/80 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-purple-900/20' : 'py-6 bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-slate-900/80 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-emerald-900/20' : 'py-6 bg-transparent'
         }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold font-poppins text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-          HAJKUL CONSULTING
+        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-2xl font-bold font-poppins text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-500 flex items-center gap-3">
+          <span className="font-doto text-4xl text-blue-400 tracking-wide">TypeofX </span>
+          {/* <span className="text-xl text-slate-300">CONSULTING AB</span> */}
         </a>
 
         {/* Desktop Nav */}
@@ -41,14 +59,16 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-slate-300 hover:text-white hover:text-purple-400 transition-colors"
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-sm font-medium text-slate-300 hover:text-white hover:text-emerald-400 transition-colors"
             >
               {link.name}
             </a>
           ))}
           <a
             href="#contact"
-            className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all transform hover:-translate-y-1"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 to-blue-600 font-medium hover:shadow-lg hover:shadow-emerald-500/30 transition-all transform hover:-translate-y-1 text-white"
           >
             Get Started
           </a>
@@ -77,12 +97,19 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-slate-300 hover:text-white"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-lg font-medium text-slate-300 hover:text-white w-full py-2"
                 >
                   {link.name}
                 </a>
               ))}
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className="text-lg font-medium text-emerald-400 hover:text-emerald-300 w-full py-2 pb-4"
+              >
+                Get Started
+              </a>
             </div>
           </motion.div>
         )}
