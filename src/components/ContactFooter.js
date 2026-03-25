@@ -140,7 +140,7 @@ const ContactFooter = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Your Name*</label>
+                  <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Your Name<span className="text-main-secondary">*</span></label>
                   <input 
                     type="text" 
                     name="name"
@@ -152,7 +152,7 @@ const ContactFooter = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Your Email*</label>
+                  <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Your Email<span className="text-main-secondary">*</span></label>
                   <input 
                     type="email" 
                     name="email"
@@ -166,7 +166,7 @@ const ContactFooter = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Choose a Service*</label>
+                <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Choose a Service<span className="text-main-secondary">*</span></label>
                 <select 
                   name="service"
                   required
@@ -183,7 +183,7 @@ const ContactFooter = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Enter Your Project Details*</label>
+                <label className="text-xs uppercase tracking-wider text-slate-400 font-medium">Enter Your Project Details<span className="text-main-secondary">*</span></label>
                 <textarea 
                   name="message"
                   required

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +20,12 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
+    { name: 'Process', href: '#process' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Why Us', href: '#why-us' },
     { name: 'Tech Stack', href: '#tech' },
     { name: 'FAQ', href: '#faq' },
+    { name: 'About', href: '/about' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -26,15 +33,31 @@ const Navbar = () => {
     e.preventDefault();
     setIsOpen(false);
 
+    if (href.startsWith('/about') || href.startsWith('/portfolio')) {
+      navigate(href);
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const isHash = href.includes('#');
+    const hashTarget = isHash ? href.substring(href.indexOf('#')) : '';
+
+    if (location.pathname !== '/') {
+      navigate('/' + hashTarget);
+      return;
+    }
+
     // Add a slight delay to allow the menu to start closing before scrolling
     setTimeout(() => {
-      const targetId = href.replace('#', '');
+      const targetId = hashTarget.replace('#', '');
       const element = document.getElementById(targetId);
       if (element) {
         // Offset for fixed navbar
         const yOffset = -80;
         const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
+      } else if (targetId === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }, 100);
   };
@@ -65,7 +88,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-sm font-medium text-slate-300 hover:text-white hover:text-emerald-400 transition-colors"
+              className="text-sm font-medium text-slate-300 hover:text-main-secondary transition-colors"
             >
               {link.name}
             </a>
@@ -103,7 +126,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-lg font-medium text-slate-300 hover:text-white w-full py-2"
+                  className="text-lg font-medium text-slate-300 hover:text-main-secondary w-full py-2 transition-colors"
                 >
                   {link.name}
                 </a>

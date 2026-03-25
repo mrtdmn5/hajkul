@@ -51,38 +51,85 @@
       "title": "UI/UX Design",
       "description": "User-centered design to create intuitive and engaging digital experiences.",
       "icon": "Palette"
+    },
+    {
+      "id": "hardware-automation",
+      "title": "Hardware & IoT Automation",
+      "description": "End-to-end automated systems combining advanced software with seamless hardware integration, from peripherals to complex operational workflows.",
+      "icon": "Cpu"
+    },
+    {
+      "id": "desktop-apps",
+      "title": "Desktop & Native Systems",
+      "description": "High-performance desktop and system-level applications engineered for profound OS control, unyielding security, and absolute reliability.",
+      "icon": "Monitor"
     }
   ],
   "techStack": [
     {
+      "name": "React.js",
+      "description": "Helps us build dynamic, robust, and highly interactive web interfaces component by component.",
+      "icon": "Globe"
+    },
+    {
+      "name": "Node.js",
+      "description": "Powers fast, scalable, and high-performance event-driven backend microservices.",
+      "icon": "Server"
+    },
+    {
+      "name": "AWS & Azure",
+      "description": "Deploys secure, highly-available cloud infrastructures with global deployment.",
+      "icon": "Cloud"
+    },
+    {
+      "name": "Java",
+      "description": "Builds impenetrable, deeply scalable, and secure enterprise-grade systems.",
+      "icon": "Coffee"
+    },
+    {
+      "name": "TypeScript",
+      "description": "Provides secure, strictly typed structural guarantees for large-scale codebases.",
+      "icon": "FileCode2"
+    },
+    {
       "name": "React Native",
-      "description": "Ensures efficient cross-platform development for Android and iOS.",
+      "description": "Ensures efficient, native mobile application performance for both iOS and Android.",
       "icon": "Smartphone"
     },
     {
       "name": "Firebase",
-      "description": "Provides real-time database management, authentication, and cloud functions.",
-      "icon": "Database"
+      "description": "Provides rapid real-time database syncing, authentication, and serverless functions.",
+      "icon": "Flame"
     },
     {
       "name": "Unity 3D",
-      "description": "Empowers us to create immersive virtual and augmented reality experiences.",
+      "description": "Empowers immersive virtual reality simulations and interactive 3D frameworks.",
       "icon": "Box"
     },
     {
-      "name": "React.js",
-      "description": "Helps us build dynamic and interactive web interfaces.",
-      "icon": "Globe"
-    },
-    {
-      "name": "AWS",
-      "description": "Offers reliable cloud solutions, ensuring scalability and secure infrastructure.",
-      "icon": "CloudLightning"
-    },
-    {
       "name": "WordPress",
-      "description": "Is our go-to for flexible and customizable content management systems.",
+      "description": "Delivers highly flexible, customizable, and completely SEO-friendly CMS platforms.",
       "icon": "Layout"
+    },
+    {
+      "name": "MongoDB",
+      "description": "Manages high-volume data capacity with flexible NoSQL storage architecture.",
+      "icon": "Database"
+    },
+    {
+      "name": "Next.js",
+      "description": "Serves lightning-fast server-side rendered (SSR) and SEO-optimized web applications.",
+      "icon": "Zap"
+    },
+    {
+      "name": "Tailwind CSS",
+      "description": "Designs beautifully tailored, responsive UI systems with utility-first styling.",
+      "icon": "Palette"
+    },
+    {
+      "name": "Swift & Kotlin",
+      "description": "Crafts sophisticated, truly native applications with deep OS hardware integration.",
+      "icon": "Code2"
     }
   ],
   "faq": [
@@ -131,5 +178,129 @@
     },
     "email": "info@typeofx.com",
     "copyright": "Copyright © Typeofx All Rights Reserved. React.js Innovation | Designed by Typeofx."
+  },
+  "aboutPage": {
+    "titlePrefix": "Swedish Engineering,",
+    "titleHighlight": "Global Impact",
+    "subtitle": "Who We Are",
+    "backgroundText": "SWE",
+    "paragraphs": [
+      "We are a technology-driven IT consultancy focused on delivering scalable, maintainable, and high-performance software solutions. Our team combines strong engineering principles with a deep understanding of real-world business dynamics. We don't just write code—we build intelligent systems that solve complex problems, reduce operational overhead, and create sustainable, long-term value.",
+      "<strong class=\"text-white font-medium\">Born in Malmö, Sweden</strong>, our journey began by providing specialized technological consulting to preeminent institutions and industry leaders, including <span class=\"text-white font-medium\">Lund University</span> and <span class=\"text-white font-medium\">Sandberg Development</span>. Building upon this legacy of high-tier academic and industrial innovation, we established our own agency with a unified vision: to scale our impact and deliver that same level of elite engineering to a broader global audience.",
+      "Today, with extensive expertise spanning across mobile application development, sophisticated backend architectures, intelligent automation, and complex system integrations, we empower organizations at every stage of their growth. From ambitious early-stage startups to expanding, future-focused enterprises, we are the technical partners you can trust."
+    ],
+    "cards": [
+      {
+        "title": "Mission",
+        "description": "To empower businesses through intuitive design and robust engineering, ensuring they thrive in an ever-evolving digital landscape.",
+        "borderColor": "border-t-emerald-500/50"
+      },
+      {
+        "title": "Vision",
+        "description": "To become the global standard for digital excellence, where creativity meets technical mastery to solve the most complex challenges.",
+        "borderColor": "border-t-blue-500/50"
+      },
+      {
+        "title": "Values",
+        "description": "Integrity in our actions, brilliance in our code, and an unwavering commitment to our clients' continuous success.",
+        "borderColor": "border-t-main-secondary/50"
+      }
+    ]
+  },
+  "process": {
+    "title": "How We Work",
+    "subtitle": "Our Process",
+    "description": "A streamlined, transparent, and highly effective methodology designed to bring your digital vision to life with precision and excellence.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Discovery",
+        "description": "We dive deep into your ecosystem to understand your business objectives, target audience, and precise technical requirements.",
+        "icon": "Search"
+      },
+      {
+        "number": "02",
+        "title": "Planning",
+        "description": "We architect the solution, establish clear timelines, and define a comprehensive roadmap to ensure seamless execution.",
+        "icon": "Map"
+      },
+      {
+        "number": "03",
+        "title": "Development",
+        "description": "Our engineers build the core system utilizing clean architecture, modern frameworks, and industry best practices.",
+        "icon": "Terminal"
+      },
+      {
+        "number": "04",
+        "title": "Delivery",
+        "description": "Through rigorous testing, quality assurance, and optimization, we deploy stable, production-ready systems.",
+        "icon": "Rocket"
+      },
+      {
+        "number": "05",
+        "title": "Support",
+        "description": "We provide continuous monitoring, proactive maintenance, and scalable adjustments as your business grows.",
+        "icon": "LifeBuoy"
+      }
+    ]
+  },
+  "portfolioPage": {
+    "titlePrefix": "Our",
+    "titleHighlight": "Featured Work",
+    "subtitle": "Portfolio",
+    "description": "Explore a selection of our most impactful digital transformations. We build scalable, high-performance systems for visionaries globally.",
+    "projects": [
+      {
+        "id": "fintech-dashboard",
+        "title": "FinTech Analytical Dashboard",
+        "category": "Web Application",
+        "description": "A comprehensive SaaS platform providing real-time data visualization and deep financial analytics for enterprise firms.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+        "tags": ["React", "Node.js", "AWS"]
+      },
+      {
+        "id": "health-app",
+        "title": "CareConnect Mobile App",
+        "category": "Mobile Development",
+        "description": "An intuitive telehealth application connecting patients with healthcare professionals seamlessly securely.",
+        "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+        "tags": ["React Native", "Firebase", "WebRTC"]
+      },
+      {
+        "id": "ecomm-platform",
+        "title": "Elevate E-Commerce",
+        "category": "System Integration",
+        "description": "A high-conversion e-commerce architecture dealing with millions of requests during peak traffic seasons.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+        "tags": ["Next.js", "Stripe", "GraphQL"]
+      }
+    ]
+  },
+  "whyUs": {
+    "title": "Why Choose Us",
+    "subtitle": "Our Advantage",
+    "description": "We are more than just developers; we are strategic technical partners committed to your long-term success.",
+    "features": [
+      {
+        "title": "Agile Methodology",
+        "description": "We deliver iteratively, ensuring flexibility to adapt to changing business needs.",
+        "icon": "RefreshCw"
+      },
+      {
+        "title": "Enterprise Security",
+        "description": "Secure by design principles applied to every layer of your application.",
+        "icon": "ShieldCheck"
+      },
+      {
+        "title": "Transparent Communication",
+        "description": "Clear, continuous reporting so you always know your project's precise status.",
+        "icon": "MessageSquare"
+      },
+      {
+        "title": "Future-Proof Tech",
+        "description": "We use modern, scalable tech stacks that will stand the test of time.",
+        "icon": "Cpu"
+      }
+    ]
   }
 }

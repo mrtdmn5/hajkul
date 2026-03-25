@@ -69,8 +69,9 @@ const Hero = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="inline-block px-4 py-1.5 mb-6 rounded-full glass border border-white/20 text-sm font-medium tracking-wide text-cyan-300"
+            className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full glass border border-white/20 text-sm font-medium tracking-wide text-slate-200"
           >
+            <span className="w-2 h-2 rounded-full bg-main-secondary shadow-[0_0_8px_var(--color-main-secondary)] animate-pulse"></span>
             {content.hero.subtitle}
           </motion.div>
 
