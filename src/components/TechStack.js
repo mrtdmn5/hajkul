@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
+import Matter from 'matter-js';
 import content from '../content.json';
 
 const IconComponent = ({ name, className }) => {
@@ -10,56 +11,168 @@ const IconComponent = ({ name, className }) => {
 };
 
 const TechStack = () => {
-  return (
-    <section id="tech" className="py-32 relative bg-slate-950/80 border-y border-white/5 backdrop-blur-3xl overflow-hidden">
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/2"></div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center max-w-2xl mx-auto mb-20"
-        >
-          <span className="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-4 block">Powered By</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6">
-            Our <span className="text-gradient">Tech Stack</span>
-          </h2>
-          <p className="text-slate-400">
-            We leverage industry-leading technologies to build scalable, secure, and high-performance solutions.
-          </p>
-        </motion.div>
+  const sceneRef = useRef(null);
+  const engineRef = useRef(null);
+  const runnerRef = useRef(null);
+  const boxRefs = useRef([]);
+  // Use framer-motion's useInView to trigger animation only when scrolled to
+  const isInView = useInView(sceneRef, { once: true, margin: "-100px" });
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
-          {content.techStack.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "0px" }}
-              whileHover={{ y: -10, scale: 1.05 }}
-              className="group flex flex-col items-center justify-center p-6 glass-card rounded-2xl relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-blue-500/0 group-hover:from-emerald-500/10 group-hover:to-blue-500/10 transition-colors duration-500 rounded-2xl"></div>
-              
-              <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30 transition-all duration-300 relative z-10">
-                <IconComponent name={tech.icon} className="w-8 h-8 text-slate-300 group-hover:text-cyan-400 transition-colors" />
-              </div>
-              
-              <h4 className="text-base font-semibold text-white font-poppins text-center z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-300 transition-colors mb-2">
-                {tech.name}
-              </h4>
-              
-              {/* Tooltip on hover */}
-              <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -bottom-2 group-hover:bottom-4 px-2 w-full text-center sm:hidden group-hover:sm:block hidden z-20">
-                <p className="text-[10px] text-slate-400 leading-tight bg-slate-900/90 backdrop-blur-md rounded border border-white/10 p-2 shadow-xl">
-                  {tech.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+  useEffect(() => {
+    if (!isInView || !sceneRef.current) return;
+
+    // Reset boxRefs array length
+    boxRefs.current = boxRefs.current.slice(0, content.techStack.length);
+
+    // Matter.js Module Aliases
+    const Engine = Matter.Engine,
+      Runner = Matter.Runner,
+      MouseConstraint = Matter.MouseConstraint,
+      Mouse = Matter.Mouse,
+      World = Matter.World,
+      Bodies = Matter.Bodies;
+
+    // Create engine
+    const engine = Engine.create();
+    engineRef.current = engine;
+    const world = engine.world;
+
+    // Set realistic sharp gravity (less floaty)
+    world.gravity.y = 1.2;
+
+    const width = sceneRef.current.clientWidth;
+    const height = sceneRef.current.clientHeight;
+
+    // Define box dimensions
+    // Slightly compacted to prevent overflow on mobile devices
+    const boxWidth = 140;
+    const boxHeight = 130;
+
+    // Create physics bodies
+    const bodies = content.techStack.map((tech, i) => {
+      // Clustered X spawn to ensure dramatic collisions and scatter on drop
+      const startX = width / 2 + (Math.random() * 200 - 100);
+      return Bodies.rectangle(
+        startX,
+        -(i * 40) - 150,
+        boxWidth,
+        boxHeight,
+        {
+          restitution: 0.3, // Solid rigid hits
+          friction: 0.8, // Heavy surface grasping
+          frictionAir: 0.005, // Normal atmospheric resistance
+          density: 0.02,
+          chamfer: { radius: 16 }, // Maps visually to rounded-2xl
+          render: { visible: false } // We use React DOM instead
+        }
+      );
+    });
+
+    // Add boundaries (walls and floor)
+    // Thicker boundaries prevent high-velocity clipping
+    // Walls are impossibly tall so boxes thrown incredibly high into the air cannot cross over them laterally
+    const floor = Bodies.rectangle(width / 2, height + 100, width * 2, 200, { isStatic: true });
+    const wallLeft = Bodies.rectangle(-100, 0, 200, height * 10, { isStatic: true });
+    const wallRight = Bodies.rectangle(width + 100, 0, 200, height * 10, { isStatic: true });
+
+    World.add(world, [...bodies, floor, wallLeft, wallRight]);
+
+    // Add mouse control
+    const mouse = Mouse.create(sceneRef.current);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: { visible: false }
+      }
+    });
+
+    // CRITICAL: Prevent mouse scrolling over to be captured by matter.js
+    mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
+
+    World.add(world, mouseConstraint);
+
+    // Run the engine
+    const runner = Runner.create();
+    runnerRef.current = runner;
+    Runner.run(runner, engine);
+
+    // Provide DOM syncer functionality on internal physics ticks
+    Matter.Events.on(engine, 'afterUpdate', () => {
+      bodies.forEach((body, i) => {
+        // Failsafe "Killplane": if you throw them so hard they teleport through physics barriers, reset them instantly safely above viewport
+        if (body.position.y > height * 2 || body.position.x < -500 || body.position.x > width + 500) {
+          Matter.Body.setPosition(body, { x: width / 2, y: -200 });
+          Matter.Body.setVelocity(body, { x: 0, y: 0 });
+        }
+
+        if (boxRefs.current[i]) {
+          const el = boxRefs.current[i];
+          // Transform strictly tracks body centers + rotations calculated natively by the browser C++ GPU
+          el.style.transform = `translate(${body.position.x - boxWidth / 2}px, ${body.position.y - boxHeight / 2}px) rotate(${body.angle}rad)`;
+        }
+      });
+    });
+
+    // Responsive resize handler (Reposition Static Boundaries)
+    const handleResize = () => {
+      if (!sceneRef.current) return;
+      const newWidth = sceneRef.current.clientWidth;
+      const newHeight = sceneRef.current.clientHeight;
+      Matter.Body.setPosition(floor, { x: newWidth / 2, y: newHeight + 100 });
+      Matter.Body.setPosition(wallRight, { x: newWidth + 100, y: newHeight / 2 });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      Runner.stop(runnerRef.current);
+      Engine.clear(engineRef.current);
+      World.clear(world);
+    };
+  }, [isInView]);
+
+  return (
+    <section id="tech" className="py-24 relative overflow-hidden bg-slate-950/80 border-y border-emerald-500/10 backdrop-blur-3xl">
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+
+      <div className="container mx-auto px-6 relative z-10 mb-8 text-center pointer-events-none">
+        <span className="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-4 block animate-pulse">Interactive Area</span>
+        <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-4">
+          Our <span className="text-gradient">Tech Stack</span>
+        </h2>
+        <p className="text-slate-400 max-w-2xl mx-auto font-light">
+          We leverage industry-leading technologies to build scalable, secure, and high-performance solutions. Go ahead, play with the falling blocks!
+        </p>
+      </div>
+
+      <div
+        ref={sceneRef}
+        className="w-full h-[600px] relative max-w-6xl mx-auto overflow-hidden rounded-3xl cursor-grab active:cursor-grabbing border border-white/5 bg-black/40 shadow-inner"
+      >
+        {content.techStack.map((tech, index) => (
+          <div
+            key={tech.name}
+            ref={(el) => (boxRefs.current[index] = el)}
+            // CRITICAL: "!transition-colors" stops CSS from overriding and smoothing out the 60fps Matter.js transform updates.
+            className="absolute top-0 left-0 w-[140px] h-[130px] glass-card rounded-2xl flex flex-col items-center justify-center p-4 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] select-none hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] !transition-colors !duration-300"
+            // Hide way out of bounds securely until Engine boots and takes absolute control
+            style={{ transform: 'translate(-2000px, -2000px)', touchAction: 'none' }}
+          >
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/5 flex items-center justify-center mb-3 pointer-events-none shadow-inner">
+              <IconComponent name={tech.icon} className="w-6 h-6 text-cyan-400" />
+            </div>
+            <h4 className="text-xs font-semibold text-white font-poppins text-center pointer-events-none break-words min-w-0 max-w-full">
+              {tech.name}
+            </h4>
+          </div>
+        ))}
+
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/30 text-[10px] sm:text-xs tracking-widest uppercase font-doto pointer-events-none flex flex-col items-center gap-2">
+          {/* <LucideIcons.MousePointer2 size={16} className="animate-bounce" /> */}
+          {/* <span className="text-center">Engine Driven • Drag The Blocks</span> */}
         </div>
       </div>
     </section>
