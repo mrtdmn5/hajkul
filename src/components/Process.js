@@ -21,7 +21,7 @@ const Process = () => {
            className="text-center max-w-2xl mx-auto mb-20"
          >
            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full glass border border-white/20 text-sm font-medium tracking-wide text-slate-200">
-             <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_var(--color-cyan-400)] animate-pulse"></span>
+             <span className="w-2 h-2 rounded-full bg-main-secondary shadow-[0_0_8px_var(--color-main-secondary)] animate-pulse"></span>
              {content.process.subtitle}
            </div>
            
@@ -49,7 +49,7 @@ const Process = () => {
                )}
 
                <div className="glass-card rounded-3xl p-6 h-full relative z-10 group hover:-translate-y-2 transition-transform duration-300">
-                 <div className="text-6xl font-black text-white/5 font-doto absolute top-4 right-4 pointer-events-none transition-all duration-300 group-hover:text-emerald-500/10">
+                 <div className="text-6xl font-black text-white/5 font-doto absolute top-4 right-4 pointer-events-none transition-all duration-300 group-hover:text-main-secondary group-hover:opacity-20">
                    {step.number}
                  </div>
                  

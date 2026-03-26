@@ -53,16 +53,16 @@
       "icon": "Palette"
     },
     {
-      "id": "hardware-automation",
-      "title": "Hardware & IoT Automation",
-      "description": "End-to-end automated systems combining advanced software with seamless hardware integration, from peripherals to complex operational workflows.",
+      "id": "desktop-iot-systems",
+      "title": "Desktop & IoT Automation",
+      "description": "High-performance native desktop interfaces securely synchronized with IoT hardware integrations for total operational control.",
       "icon": "Cpu"
     },
     {
-      "id": "desktop-apps",
-      "title": "Desktop & Native Systems",
-      "description": "High-performance desktop and system-level applications engineered for profound OS control, unyielding security, and absolute reliability.",
-      "icon": "Monitor"
+      "id": "ai-systems",
+      "title": "AI & Intelligent Systems",
+      "description": "End-to-end integration of artificial intelligence and machine learning to automate workflows, unlock data insights, and future-proof systems.",
+      "icon": "BrainCircuit"
     }
   ],
   "techStack": [
@@ -177,6 +177,7 @@
       "address": "Nobelvägen 127, 212 15 Malmö"
     },
     "email": "info@typeofx.com",
+    "linkedin": "https://www.linkedin.com/company/typeofx-consulting-ab/",
     "copyright": "Copyright © Typeofx All Rights Reserved. React.js Innovation | Designed by Typeofx."
   },
   "aboutPage": {
@@ -256,7 +257,11 @@
         "category": "Web Application",
         "description": "A comprehensive SaaS platform providing real-time data visualization and deep financial analytics for enterprise firms.",
         "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-        "tags": ["React", "Node.js", "AWS"]
+        "tags": [
+          "React",
+          "Node.js",
+          "AWS"
+        ]
       },
       {
         "id": "health-app",
@@ -264,7 +269,11 @@
         "category": "Mobile Development",
         "description": "An intuitive telehealth application connecting patients with healthcare professionals seamlessly securely.",
         "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
-        "tags": ["React Native", "Firebase", "WebRTC"]
+        "tags": [
+          "React Native",
+          "Firebase",
+          "WebRTC"
+        ]
       },
       {
         "id": "ecomm-platform",
@@ -272,7 +281,11 @@
         "category": "System Integration",
         "description": "A high-conversion e-commerce architecture dealing with millions of requests during peak traffic seasons.",
         "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-        "tags": ["Next.js", "Stripe", "GraphQL"]
+        "tags": [
+          "Next.js",
+          "Stripe",
+          "GraphQL"
+        ]
       }
     ]
   },

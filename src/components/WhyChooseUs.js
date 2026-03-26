@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
 import content from '../content.json';
 
@@ -14,15 +13,9 @@ const WhyChooseUs = () => {
     <section id="why-us" className="py-24 relative z-10">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="lg:w-1/2"
-          >
+          <div className="lg:w-1/2">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full glass border border-white/20 text-sm font-medium tracking-wide text-slate-200">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_var(--color-emerald-400)] animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-main-secondary shadow-[0_0_8px_var(--color-main-secondary)] animate-pulse"></span>
               {content.whyUs.subtitle}
             </div>
             
@@ -41,15 +34,9 @@ const WhyChooseUs = () => {
               Let's Talk
               <LucideIcons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 group-hover:text-emerald-400 transition-all" />
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
+          <div className="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
             {content.whyUs.features.map((feature, index) => (
               <div 
                 key={index}
@@ -62,7 +49,7 @@ const WhyChooseUs = () => {
                  <p className="text-slate-400 font-light text-sm line-clamp-3">{feature.description}</p>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

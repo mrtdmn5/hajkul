@@ -11,7 +11,7 @@ const IconComponent = ({ name, className }) => {
 
 const Services = () => {
   return (
-    <section id="services" className="py-32 relative z-10">
+    <section id="services" className="pt-10 pb-24 relative z-10">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

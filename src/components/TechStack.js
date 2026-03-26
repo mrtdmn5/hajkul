@@ -43,10 +43,10 @@ const TechStack = () => {
     const width = sceneRef.current.clientWidth;
     const height = sceneRef.current.clientHeight;
 
-    // Define box dimensions
-    // Slightly compacted to prevent overflow on mobile devices
-    const boxWidth = 140;
-    const boxHeight = 130;
+    const isMobile = window.innerWidth < 768;
+    // Shrink outer box tightly on mobile so it wraps the content without massive halos
+    const boxWidth = isMobile ? 80 : 140;
+    const boxHeight = isMobile ? 80 : 130;
 
     // Create physics bodies
     const bodies = content.techStack.map((tech, i) => {
@@ -88,8 +88,10 @@ const TechStack = () => {
     });
 
     // CRITICAL: Prevent mouse scrolling over to be captured by matter.js
-    mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
-    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
+    const mouseEl = mouseConstraint.mouse.element;
+    mouseEl.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
+    // For desktop scrolling to work perfectly over the canvas:
+    mouseEl.removeEventListener("wheel", mouseConstraint.mouse.mousewheel); // Essential for modern desktop
 
     World.add(world, mouseConstraint);
 
@@ -139,7 +141,7 @@ const TechStack = () => {
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
 
       <div className="container mx-auto px-6 relative z-10 mb-8 text-center pointer-events-none">
-        <span className="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-4 block animate-pulse">Interactive Area</span>
+        {/* <span className="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-4 block animate-pulse">Interactive Area</span> */}
         <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-4">
           Our <span className="text-gradient">Tech Stack</span>
         </h2>
@@ -150,29 +152,29 @@ const TechStack = () => {
 
       <div
         ref={sceneRef}
-        className="w-full h-[600px] relative max-w-6xl mx-auto overflow-hidden rounded-3xl cursor-grab active:cursor-grabbing border border-white/5 bg-black/40 shadow-inner"
+        className="w-full h-[600px] relative max-w-6xl mx-auto overflow-hidden rounded-3xl cursor-grab active:cursor-grabbing border border-white/5 bg-black/40 shadow-inner pointer-events-none md:pointer-events-auto"
       >
         {content.techStack.map((tech, index) => (
           <div
             key={tech.name}
             ref={(el) => (boxRefs.current[index] = el)}
             // CRITICAL: "!transition-colors" stops CSS from overriding and smoothing out the 60fps Matter.js transform updates.
-            className="absolute top-0 left-0 w-[140px] h-[130px] glass-card rounded-2xl flex flex-col items-center justify-center p-4 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] select-none hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] !transition-colors !duration-300"
+            className="absolute top-0 left-0 w-[80px] h-[80px] md:w-[140px] md:h-[130px] glass-card rounded-[12px] md:rounded-2xl flex flex-col items-center justify-center p-1 md:p-4 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] select-none hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] !transition-colors !duration-300 pointer-events-auto cursor-grab active:cursor-grabbing"
             // Hide way out of bounds securely until Engine boots and takes absolute control
-            style={{ transform: 'translate(-2000px, -2000px)', touchAction: 'none' }}
+            style={{ transform: 'translate(-2000px, -2000px)', touchAction: 'none' }} 
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/5 flex items-center justify-center mb-3 pointer-events-none shadow-inner">
-              <IconComponent name={tech.icon} className="w-6 h-6 text-cyan-400" />
+            <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/5 flex items-center justify-center mb-1 md:mb-3 pointer-events-none shadow-inner">
+              <IconComponent name={tech.icon} className="w-4 h-4 md:w-6 md:h-6 text-cyan-400" />
             </div>
-            <h4 className="text-xs font-semibold text-white font-poppins text-center pointer-events-none break-words min-w-0 max-w-full">
+            <h4 className="text-[9px] md:text-xs font-semibold text-white font-poppins text-center pointer-events-none break-words min-w-0 max-w-full leading-tight">
               {tech.name}
             </h4>
           </div>
         ))}
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/30 text-[10px] sm:text-xs tracking-widest uppercase font-doto pointer-events-none flex flex-col items-center gap-2">
-          {/* <LucideIcons.MousePointer2 size={16} className="animate-bounce" /> */}
-          {/* <span className="text-center">Engine Driven • Drag The Blocks</span> */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/30 text-[10px] sm:text-xs tracking-widest uppercase font-doto pointer-events-none flex flex-col items-center gap-2 group cursor-default">
+          {/* <LucideIcons.MousePointer2 size={16} className="animate-bounce text-main-secondary opacity-70" /> */}
+          {/* <span className="text-center group-hover:text-main-secondary transition-colors duration-300">Engine Driven • Drag The Blocks</span> */}
         </div>
       </div>
     </section>

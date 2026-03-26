@@ -9,7 +9,6 @@ import FAQ from './components/FAQ';
 import ContactFooter from './components/ContactFooter';
 import CookieConsent from './components/CookieConsent';
 import About from './components/About';
-import Portfolio from './components/Portfolio';
 import WhyChooseUs from './components/WhyChooseUs';
 
 function App() {
@@ -54,11 +53,6 @@ function App() {
         <Route path="/about" element={
           <main>
             <About />
-          </main>
-        } />
-        <Route path="/portfolio" element={
-          <main>
-            <Portfolio />
           </main>
         } />
       </Routes>

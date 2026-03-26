@@ -18,10 +18,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '/' },
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
-    { name: 'Portfolio', href: '/portfolio' },
     { name: 'Why Us', href: '#why-us' },
     { name: 'Tech Stack', href: '#tech' },
     { name: 'FAQ', href: '#faq' },
@@ -33,7 +32,22 @@ const Navbar = () => {
     e.preventDefault();
     setIsOpen(false);
 
-    if (href.startsWith('/about') || href.startsWith('/portfolio')) {
+    if (href === '/') {
+      if (location.pathname !== '/') {
+        navigate('/');
+      }
+      // Remove any trailing #hash from the URL cleanly without reloading
+      window.history.pushState("", document.title, window.location.pathname + window.location.search);
+
+      // Delay to allow mobile menu closing animation before triggering smooth scroll
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+
+      return;
+    }
+
+    if (href.startsWith('/about')) {
       navigate(href);
       window.scrollTo(0, 0);
       return;
@@ -71,12 +85,15 @@ const Navbar = () => {
         }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-2xl font-bold font-poppins text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-500 flex items-center gap-3">
-          <span className="font-doto text-4xl text-blue-400 tracking-wide flex items-center">
+        <a href="/" onClick={(e) => handleNavClick(e, '/')} className="flex items-center relative group">
+          <span className="font-doto text-4xl text-blue-400 tracking-wide flex items-center relative">
             Typeof
-            <span className="relative inline-block">
+            <span className="relative inline-block ml-1">
               <span className="text-main-secondary">X</span>
-              <span className="absolute  right-[-3px] text-main-secondary">X</span>
+              <span className="absolute right-[-3px] text-main-secondary">X</span>
+            </span>
+            <span className="absolute -bottom-3 right-0 text-[0.65rem] tracking-[0.22em] text-slate-400 font-doto  uppercase whitespace-nowrap group-hover:text-main-secondary transition-colors duration-300">
+              Consulting AB
             </span>
           </span>
         </a>

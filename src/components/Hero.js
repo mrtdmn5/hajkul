@@ -111,8 +111,9 @@ const Hero = () => {
 
       {/* Decorative scroll indicator */}
       <AnimatePresence>
-        {!hasScrolled && (
+        {!hasScrolled ? (
           <motion.div
+            key="scroller"
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-2 text-slate-400 opacity-70"
@@ -122,6 +123,14 @@ const Hero = () => {
               <div className="w-[1px] h-8 bg-gradient-to-b from-slate-400 to-transparent"></div>
             </motion.div>
           </motion.div>
+        ) : (
+          <motion.div 
+            key="track"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100px" }}
+            transition={{ duration: 0.8 }}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-emerald-500/50 to-transparent"
+          ></motion.div>
         )}
       </AnimatePresence>
     </section>
